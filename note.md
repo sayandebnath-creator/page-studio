@@ -82,3 +82,20 @@ You now officially satisfy:
 
 # Hydration error
 The issue was that dynamically generated IDs (crypto.randomUUID()) caused the server-rendered HTML and client-rendered HTML to differ during hydration.
+
+# NOW TEST STARTS:-
+playwright.config.ts
+## preview smoke test
+tests/e2e/preview.spec.ts
+## cta test
+tests/e2e/cta.spec.ts
+## Accessibility test
+tests/e2e/a11y.spec.ts
+
+# RUN TESTS
+npx playwright test
+
+# PROBLEMS:-
+- Invalid URL issue — Playwright could not connect because the local Next.js server/base URL was not configured correctly.
+- CTA test issue — the selector matched multiple links, causing Playwright strict mode failure.
+- Accessibility issue — the app was missing a <title> tag, triggering an axe WCAG violation.
