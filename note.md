@@ -58,3 +58,5 @@ create studio route in app (update)
 created cta reducer and used it in studio
 added testimonial section with button for adding testimonial
 persist redux state storage
+
+# Added contentful integration
