@@ -7,7 +7,8 @@ import {
   updateHeroHeading,
   updateHeroSubheading,
   updateCTALabel,
-  updateCTAUrl
+  updateCTAUrl,
+  addSection,
 } from "@/features/draftPage/draftPageSlice"
 
 import { sectionRegistry } from "@/registry/sectionRegistry"
@@ -20,6 +21,16 @@ export default function StudioPage() {
   const page = useSelector(
     (state: RootState) => state.draftPage
   )
+
+    // Sections is working as union type array now 
+    const heroSection = page.sections.find(
+    (section) => section.type === "hero"
+    )
+
+    const ctaSection = page.sections.find(
+    (section) => section.type === "cta"
+    )
+
 
   return (
     <main className="min-h-screen bg-zinc-950 text-white">
@@ -59,7 +70,8 @@ export default function StudioPage() {
                   focus:border-blue-500
                 "
                 value={
-                  page.sections[0].props.heading
+                heroSection?.props
+                    .heading ?? ""
                 }
                 onChange={(e) =>
                   dispatch(
@@ -97,8 +109,7 @@ export default function StudioPage() {
                   focus:border-blue-500
                 "
                 value={
-                  page.sections[0].props
-                    .subheading
+                    heroSection?.props.subheading ?? ""
                 }
                 onChange={(e) =>
                   dispatch(
@@ -122,7 +133,7 @@ export default function StudioPage() {
                     <input
                     className="w-full border p-2 rounded"
                     value={
-                        page.sections[1].props.label
+                        ctaSection?.props.label ?? ""
                     }
                     onChange={(e) =>
                         dispatch(
@@ -142,7 +153,7 @@ export default function StudioPage() {
                     <input
                     className="w-full border p-2 rounded"
                     value={
-                        page.sections[1].props.url
+                        ctaSection?.props.url ?? ""
                     }
                     onChange={(e) =>
                         dispatch(
@@ -155,6 +166,20 @@ export default function StudioPage() {
                 </div>
             </div>
           </div>
+          <button
+            className="
+                px-4
+                py-2
+                bg-black
+                text-white
+                rounded
+            "
+            onClick={() =>
+                dispatch(addSection())
+            }
+            >
+            Add Testimonial
+        </button>
         </aside>
 
         {/* PREVIEW */}
