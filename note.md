@@ -104,3 +104,8 @@ npx playwright test
 I implemented automated end-to-end and accessibility testing using Playwright and axe-core, while manually validating RBAC, publishing flow, and studio interactions.
 
 # NOW added Github actions
+
+# start-server-and-test:
+starts Next.js
+waits until localhost responds
+THEN runs Playwright
