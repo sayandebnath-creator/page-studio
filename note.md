@@ -52,3 +52,9 @@ create studio route in app (update)
 ✅ Shared renderer
 ✅ Live preview
 ✅ WYSIWYG-lite architecture
+
+
+# Next I did:
+created cta reducer and used it in studio
+added testimonial section with button for adding testimonial
+persist redux state storage
