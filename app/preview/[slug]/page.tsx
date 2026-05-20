@@ -6,6 +6,8 @@ import { RootState } from "@/store/store"
 import {
   updateHeroHeading,
   updateHeroSubheading,
+  updateCTALabel,
+  updateCTAUrl
 } from "@/features/draftPage/draftPageSlice"
 
 import { sectionRegistry } from "@/registry/sectionRegistry"
@@ -106,6 +108,51 @@ export default function StudioPage() {
                   )
                 }
               />
+            </div>
+            <div className="pt-6 border-t space-y-4">
+                <h3 className="font-semibold">
+                    CTA Section
+                </h3>
+
+                <div className="space-y-2">
+                    <label className="block text-sm">
+                    CTA Label
+                    </label>
+
+                    <input
+                    className="w-full border p-2 rounded"
+                    value={
+                        page.sections[1].props.label
+                    }
+                    onChange={(e) =>
+                        dispatch(
+                        updateCTALabel(
+                            e.target.value
+                        )
+                        )
+                    }
+                    />
+                </div>
+
+                <div className="space-y-2">
+                    <label className="block text-sm">
+                    CTA URL
+                    </label>
+
+                    <input
+                    className="w-full border p-2 rounded"
+                    value={
+                        page.sections[1].props.url
+                    }
+                    onChange={(e) =>
+                        dispatch(
+                        updateCTAUrl(
+                            e.target.value
+                        )
+                        )
+                    }
+                    />
+                </div>
             </div>
           </div>
         </aside>
