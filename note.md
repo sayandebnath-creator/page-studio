@@ -60,3 +60,13 @@ added testimonial section with button for adding testimonial
 persist redux state storage
 
 # Added contentful integration
+
+# separated client and server component
+
+# added RBAC role permissions nad middleware
+
+# Now you satisfy:
+
+✅ protected publish endpoint
+✅ publish workflow
+✅ versioning logic foundation
