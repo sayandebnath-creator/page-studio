@@ -119,6 +119,31 @@ export default function StudioPageClient() {
           >
             Add Testimonial
           </button>
+          <button
+            className="
+                mt-4
+                px-4
+                py-2
+                bg-green-600
+                rounded
+            "
+            onClick={async () => {
+
+                const response =
+                await fetch("/api/publish", {
+                    method: "POST",
+                })
+
+                const data =
+                await response.json()
+
+                alert(
+                `Published version ${data.version}`
+                )
+            }}
+            >
+            Publish
+            </button>
         </aside>
 
         <DndContext collisionDetection={closestCenter} onDragEnd={handleDragEnd}>
