@@ -27,6 +27,9 @@ import { sectionRegistry } from "@/registry/sectionRegistry"
 
 import UnsupportedSection from "@/components/sections/UnsupportedSection"
 
+import SortableSection
+from "@/components/studio/SortableSection"
+
 export default function StudioPageClient() {
   const dispatch = useDispatch()
 
@@ -369,22 +372,9 @@ export default function StudioPageClient() {
                     }
 
                     return (
-                      <div
+                      <SortableSection
                         key={section.id}
                         id={section.id}
-                        className="
-                          group
-                          relative
-                          overflow-hidden
-                          rounded-3xl
-                          border
-                          border-white/10
-                          bg-black
-                          transition-all
-                          duration-300
-                          hover:border-blue-500
-                          hover:shadow-[0_0_0_1px_rgba(59,130,246,0.4)]
-                        "
                       >
                         <div
                           className="
@@ -410,7 +400,7 @@ export default function StudioPageClient() {
                         </div>
 
                         <Component {...section.props} />
-                      </div>
+                      </SortableSection>
                     )
                   })}
                 </section>
