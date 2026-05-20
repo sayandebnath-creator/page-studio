@@ -13,13 +13,8 @@ import {
   generateChangelog,
 } from "@/lib/semver/changelog"
 
-import {
-  saveRelease,
-} from "@/lib/releases/saveRelease"
-
 export async function POST() {
 
-  // mock previous release
   const previousVersion = "1.0.0"
 
   const previousSections = [
@@ -46,22 +41,11 @@ export async function POST() {
   const changelog =
     generateChangelog(bump)
 
-  const snapshot = {
-    version: nextVersion,
-    sections: currentSections,
-    publishedAt:
-      new Date().toISOString(),
-  }
-
-  await saveRelease({
-    slug: "home",
-    version: nextVersion,
-    data: snapshot,
-  })
-
   return NextResponse.json({
     success: true,
     version: nextVersion,
     changelog,
+    publishedAt:
+      new Date().toISOString(),
   })
 }
