@@ -4,8 +4,8 @@ export type VersionType =
   | "patch"
 
 export function determineVersionBump(
-  previousSections: any[],
-  currentSections: any[]
+  previousSections: unknown[],
+  currentSections: unknown[]
 ): VersionType {
 
   if (

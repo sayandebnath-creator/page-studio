@@ -8,4 +8,4 @@ export const sectionRegistry = {
   featureGrid: FeatureGridSection,
   testimonial: TestimonialSection,
   cta: CTASection,
-}
+} as const

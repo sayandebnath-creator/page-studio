@@ -1,5 +1,6 @@
 "use client"
 
+import React from "react"
 import { useDispatch, useSelector } from "react-redux"
 import { RootState } from "@/store/store"
 
@@ -41,7 +42,10 @@ export default function StudioPageClient() {
     (section) => section.type === "cta"
   )
 
-  function handleDragEnd(event: any) {
+  function handleDragEnd(event: {
+    active: { id: string | number }
+    over: { id: string | number } | null
+    }) {
     const { active, over } = event
 
     if (!over) return
@@ -49,8 +53,8 @@ export default function StudioPageClient() {
     if (active.id !== over.id) {
       dispatch(
         reorderSections({
-          activeId: active.id,
-          overId: over.id,
+        activeId: String(active.id),
+        overId: String(over.id),
         })
       )
     }
@@ -150,7 +154,7 @@ export default function StudioPageClient() {
           <SortableContext items={page.sections.map((section) => section.id)} strategy={verticalListSortingStrategy}>
             <section className="bg-black min-h-screen">
               {page.sections.map((section) => {
-                const Component = sectionRegistry[section.type as keyof typeof sectionRegistry]
+                const Component = sectionRegistry[section.type as keyof typeof sectionRegistry] as React.ElementType
 
                 if (!Component) {
                   return <UnsupportedSection key={section.id} type={section.type} />
@@ -158,7 +162,7 @@ export default function StudioPageClient() {
 
                 return (
                   <div key={section.id} id={section.id} className="border border-transparent hover:border-blue-500">
-                    <Component {...(section.props as any)} />
+                    <Component {...section.props} />
                   </div>
                 )
               })}

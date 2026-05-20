@@ -1,3 +1,5 @@
+import React from "react"
+
 import { getPageBySlug }
 from "@/lib/contentful/getPage"
 
@@ -33,7 +35,7 @@ export default async function PreviewPage({
         const Component =
           sectionRegistry[
             section.type as keyof typeof sectionRegistry
-          ]
+          ] as React.ElementType
 
         if (!Component) {
           return (
@@ -47,7 +49,7 @@ export default async function PreviewPage({
         return (
           <Component
             key={section.id}
-            {...(section.props as any)}
+            {...section.props}
           />
         )
       })}

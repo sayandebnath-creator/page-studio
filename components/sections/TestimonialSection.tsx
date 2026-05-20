@@ -10,7 +10,7 @@ export default function TestimonialSection({
   return (
     <section className="py-16 text-center">
       <blockquote className="text-2xl italic">
-        "{quote}"
+        &quot;{quote}&quot;
       </blockquote>
 
       <p className="mt-4 font-semibold">

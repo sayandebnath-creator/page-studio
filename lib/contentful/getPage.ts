@@ -36,9 +36,15 @@ export async function getPageBySlug(
 
     sections:
         (
-            item.fields.sections as any[]
+          item.fields.sections as Array<{
+            sys: { id: string }
+            fields: {
+              type: string
+              props: Record<string, unknown>
+            }
+          }>
         )?.map(
-        (section: any) => ({
+        (section) => ({
           id: section.sys.id,
           type: section.fields.type,
           props: section.fields.props,
