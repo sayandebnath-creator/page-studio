@@ -87,7 +87,7 @@ const draftPageSlice = createSlice({
 
     addSection: (state) => {
     state.sections.push({
-        id: crypto.randomUUID(),
+        id: `testimonial-${Date.now()}`,
         type: "testimonial",
         props: {
         quote: "Amazing product",
