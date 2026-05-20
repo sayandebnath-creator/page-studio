@@ -70,3 +70,15 @@ persist redux state storage
 ✅ protected publish endpoint
 ✅ publish workflow
 ✅ versioning logic foundation
+
+# Immutable Release Snapshots
+You now officially satisfy:
+
+✅ immutable release snapshots
+✅ versioned releases
+✅ changelog summary
+✅ SemVer logic
+✅ publish endpoint
+
+# Hydration error
+The issue was that dynamically generated IDs (crypto.randomUUID()) caused the server-rendered HTML and client-rendered HTML to differ during hydration.
