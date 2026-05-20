@@ -9,7 +9,18 @@ import {
   updateCTALabel,
   updateCTAUrl,
   addSection,
+  reorderSections
 } from "@/features/draftPage/draftPageSlice"
+
+import {
+  DndContext,
+  closestCenter,
+} from "@dnd-kit/core"
+
+import {
+  SortableContext,
+  verticalListSortingStrategy,
+} from "@dnd-kit/sortable"
 
 import { sectionRegistry } from "@/registry/sectionRegistry"
 
@@ -30,6 +41,21 @@ export default function StudioPage() {
     const ctaSection = page.sections.find(
     (section) => section.type === "cta"
     )
+
+    function handleDragEnd(event: any) {
+        const { active, over } = event
+
+        if (!over) return
+
+        if (active.id !== over.id) {
+            dispatch(
+            reorderSections({
+                activeId: active.id,
+                overId: over.id,
+            })
+            )
+        }
+    }
 
 
   return (
@@ -184,30 +210,53 @@ export default function StudioPage() {
 
         {/* PREVIEW */}
 
-        <section className="bg-black">
-          {page.sections.map((section) => {
-            const Component =
-              sectionRegistry[
-                section.type as keyof typeof sectionRegistry
-              ]
+        <DndContext
+            collisionDetection={closestCenter}
+            onDragEnd={handleDragEnd}
+            >
+            <SortableContext
+                items={page.sections.map(
+                (section) => section.id
+                )}
+                strategy={
+                verticalListSortingStrategy
+                }
+            >
+                <section className="bg-black min-h-screen">
+                {page.sections.map((section) => {
+                    const Component =
+                    sectionRegistry[
+                        section.type as keyof typeof sectionRegistry
+                    ]
 
-            if (!Component) {
-              return (
-                <UnsupportedSection
-                  key={section.id}
-                  type={section.type}
-                />
-              )
-            }
+                    if (!Component) {
+                    return (
+                        <UnsupportedSection
+                        key={section.id}
+                        type={section.type}
+                        />
+                    )
+                    }
 
-            return (
-              <Component
-                key={section.id}
-                {...section.props}
-              />
-            )
-          })}
-        </section>
+                    return (
+                    <div
+                        key={section.id}
+                        id={section.id}
+                        className="
+                        border
+                        border-transparent
+                        hover:border-blue-500
+                        "
+                    >
+                        <Component
+                        {...section.props}
+                        />
+                    </div>
+                    )
+                })}
+                </section>
+            </SortableContext>
+            </DndContext>
       </div>
     </main>
   )

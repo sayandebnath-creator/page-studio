@@ -95,6 +95,34 @@ const draftPageSlice = createSlice({
         },
     })
     },
+    // re-order sections
+    reorderSections: (
+        state,
+        action: PayloadAction<{
+            activeId: string
+            overId: string
+        }>
+        ) => {
+        const { activeId, overId } =
+            action.payload
+
+        const oldIndex = state.sections.findIndex(
+            (section) => section.id === activeId
+        )
+
+        const newIndex = state.sections.findIndex(
+            (section) => section.id === overId
+        )
+
+        const [removed] =
+            state.sections.splice(oldIndex, 1)
+
+        state.sections.splice(
+            newIndex,
+            0,
+            removed
+        )
+    },
 },
 })
 
@@ -103,7 +131,8 @@ export const {
   updateHeroSubheading,
   updateCTALabel,
   updateCTAUrl,
-  addSection
+  addSection,
+  reorderSections
 } = draftPageSlice.actions
 
 export default draftPageSlice.reducer
