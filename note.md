@@ -100,6 +100,7 @@ npx playwright test
 - CTA test issue — the selector matched multiple links, causing Playwright strict mode failure.
 - Accessibility issue — the app was missing a <title> tag, triggering an axe WCAG violation.
 
+# This is my line
 I implemented automated end-to-end and accessibility testing using Playwright and axe-core, while manually validating RBAC, publishing flow, and studio interactions.
 
 # NOW added Github actions
