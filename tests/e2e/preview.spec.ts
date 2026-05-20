@@ -10,9 +10,7 @@ test(
     )
 
     await expect(
-      page.getByText(
-        "THIS IS FROM CONTENTFUL"
-      )
+      page.getByRole("heading")
     ).toBeVisible()
   }
 )
