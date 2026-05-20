@@ -30,3 +30,25 @@ schemas/
 componenets/sections/
 registry/
 app/
+
+# Now have the hardest foundational piece working:
+
+✅ App Router
+✅ Typed registry
+✅ Dynamic renderer
+✅ Preview route
+✅ Section rendering architecture
+
+# Next update i did
+setup redux
+draft slice
+provider
+layout.tsx in app
+create studio route in app (update)
+
+# Now I have:
+✅ Redux
+✅ Studio editor
+✅ Shared renderer
+✅ Live preview
+✅ WYSIWYG-lite architecture
