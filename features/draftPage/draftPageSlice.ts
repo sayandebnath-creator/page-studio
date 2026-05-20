@@ -1,6 +1,7 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
+import {Page} from "@/types/page"
 
-const initialState = {
+const initialState : Page = {
   pageId: "1",
   slug: "home",
   title: "Home",
@@ -83,6 +84,17 @@ const draftPageSlice = createSlice({
             ctaSection.props.url = action.payload
         }
     },
+
+    addSection: (state) => {
+    state.sections.push({
+        id: crypto.randomUUID(),
+        type: "testimonial",
+        props: {
+        quote: "Amazing product",
+        author: "John Doe",
+        },
+    })
+    },
 },
 })
 
@@ -90,7 +102,8 @@ export const {
   updateHeroHeading,
   updateHeroSubheading,
   updateCTALabel,
-  updateCTAUrl
+  updateCTAUrl,
+  addSection
 } = draftPageSlice.actions
 
 export default draftPageSlice.reducer
