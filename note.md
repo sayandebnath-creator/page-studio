@@ -99,3 +99,5 @@ npx playwright test
 - Invalid URL issue — Playwright could not connect because the local Next.js server/base URL was not configured correctly.
 - CTA test issue — the selector matched multiple links, causing Playwright strict mode failure.
 - Accessibility issue — the app was missing a <title> tag, triggering an axe WCAG violation.
+
+I implemented automated end-to-end and accessibility testing using Playwright and axe-core, while manually validating RBAC, publishing flow, and studio interactions.
