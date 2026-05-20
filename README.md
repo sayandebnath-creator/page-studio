@@ -4,6 +4,8 @@ A schema-driven landing page builder built with Next.js App Router, Redux Toolki
 
 ## Overview
 
+![Page Studio Interface](./assets/interface-screenshot.png)
+
 Page Studio enables teams to build, preview, edit, reorder, and publish landing pages using a modular section architecture.
 
 The application supports:
