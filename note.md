@@ -101,3 +101,5 @@ npx playwright test
 - Accessibility issue — the app was missing a <title> tag, triggering an axe WCAG violation.
 
 I implemented automated end-to-end and accessibility testing using Playwright and axe-core, while manually validating RBAC, publishing flow, and studio interactions.
+
+# NOW added Github actions
